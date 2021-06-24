@@ -362,8 +362,8 @@ fit.results <- rbindlist(fill=TRUE, foreach(i=1:nrow(dat.subset$E)) %dopar% {
       if(!is.null(contrast.matrix)){
         # Check that contrast matrix is appropriately formated
         
-        if(!all(rownames(contrast.matrix) == dplyr::select(meta, x.var)%>%unlist()%>%as.factor()%>%levels())){
-          print("Error: contrast matrix provided does not correspond to levels of x.var specified for comparisons.Check that matrix row-order corresponds to factor levels.")
+        if(!all(rownames(contrast.matrix) == dplyr::select(meta, x.var)%>%unlist()%>%levels())){
+          stop("Error: contrast matrix provided does not correspond to levels of x.var specified for comparisons.Check that matrix row-order corresponds to factor levels.")
           } else{
           
           # format contrasts for lsmeans
